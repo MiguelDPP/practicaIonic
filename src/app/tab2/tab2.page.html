@@ -10,5 +10,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Productos</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  <!-- <ion-card>
+    <ion-card-header>
+      <ion-card-title>Productos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let producto of productos">
+          <ion-label>
+            <h2>{{producto.title}}</h2>
+            <h3>{{producto.precio}}</h3>
+            <p>{{producto.descripcion}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card> -->
+  <div *ngFor="let producto of productos">
+    <ion-card>
+      <img alt="Silhouette of mountains" src={{producto.images[0]}} />
+      <ion-card-header>
+        <ion-card-title>
+          {{producto.title}}
+        </ion-card-title>
+        <ion-card-subtitle>
+          {{producto.price}}
+        </ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{producto.description}}
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

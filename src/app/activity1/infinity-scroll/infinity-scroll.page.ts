@@ -11,17 +11,18 @@ export class InfinityScrollPage implements OnInit {
   constructor() { }
 
   items: any[] = []
-  api = 'https://pokeapi.co/api/v2/';
-  next = '';
+  api = 'https://pokeapi.co/api/v2/pokemon?limit=20';
 
   ngOnInit() {
     this.generateItems();
   }
 
   private async generateItems() {
-    const response = await fetch(`${this.api}pokemon?limit=20`);
+    const response = await fetch(this.api);
     const data = await response.json();
-    this.next = data.next;
+    if (data.next) {
+      this.api = data.next;
+    }
 
     for (const pokemon of data.results) {
       const pokemonResponse = await fetch(pokemon.url);
